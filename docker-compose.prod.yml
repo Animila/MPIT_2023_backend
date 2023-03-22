@@ -21,12 +21,13 @@ services:
         container_name: travellist-db
         restart: unless-stopped
         environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_DATABASE: laravel
+            MYSQL_ROOT_PASSWORD: root
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
+        ports:
+          - 80:3306
+
         networks:
             - travellist
 
