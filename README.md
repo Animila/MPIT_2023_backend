@@ -15,38 +15,8 @@
 
 ## Стек-технологии
 
-Фронтенд построен на [React Native](https://reactnative.dev/) (v8.11.0) и с использованием [Expo](https://expo.dev/). Для стилизации используется [TailwindCss](https://tailwindcss.ru/). 
-
-Библиотеки для React:
-
-| Библиотека                                  | Версия       |
-|---------------------------------------------|--------------|
-| "@react-native-async-storage/async-storage" | "^1.17.12"   |
-|"@react-navigation/bottom-tabs"             |  "^6.5.7",   |
-|"@react-navigation/native"                  |  "^6.1.6",   |
-|"@react-navigation/native-stack"            |  "^6.9.12",  |
-|"axios"                                     |  "^1.3.4",   |
-|"expo"                                      |  "~48.0.6",  |
-|"expo-location"                             |  "^15.1.1",  |
-|"expo-status-bar"                           |  "~1.4.4",   |
-|"react"                                     |  "18.2.0",   |
-|"react-dom"                                 |  "^18.2.0",  |
-|"react-icons"                               |  "^4.8.0",   |
-|"react-native"                              |  "0.71.3",   |
-|"react-native-loading-spinner-overlay"      |  "^3.0.1",   |
-|"react-native-maps"                         |  "1.4.0",    |
-|"react-native-masked-text"                  |  "^1.13.0",  |
-|"react-native-safe-area-context"            |  "^4.5.0",   |
-|"react-native-screens"                      | "^3.20.0",   |
-|"react-native-svg"                          |  "^13.8.0",  |
-|"react-native-swipe-cards"                  |  "^0.1.1",   |
-|"react-native-web"                          |  "~0.18.11", |
-|"react-native-yamap"                        |  "^4.1.18",  |
- |    "tailwindcss-react-native"               |  "^1.7.10"   |  
-
-
 В качестве бекенда же выступает PHP(v7.4.29-cli) и [Laravel](https://laravel.com/) (v10.0) для получения данных через API, а также обработки различной информации.
-Сервер развернут на серверах [ЭджЦентра](https://hosting.edgecenter.ru/billmgr) с установленной системой Ubuntu 20.04 и сервером Nginx.
+Сервер развернут на серверах [ЭджЦентра](https://hosting.edgecenter.ru/billmgr) с установленной системой Ubuntu 20.04 и сервером Nginx. SSL сертификат подписан CertBot
 
 ## Установка и запуск
 
