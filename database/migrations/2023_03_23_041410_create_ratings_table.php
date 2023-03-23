@@ -17,6 +17,7 @@ class CreateRatingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_base');
             $table->unsignedBigInteger('id_user');
+            $table->integer('rating');
             $table->timestamps();
 
             $table->index('id_base');

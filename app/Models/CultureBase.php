@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CultureBase extends Model
 {
     use HasFactory;
+    protected $fillable = ['title', 'description', 'longitude', 'latitude', 'url', 'countPeople', 'price'];
+
+
 }

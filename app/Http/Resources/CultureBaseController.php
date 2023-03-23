@@ -19,15 +19,7 @@ class CultureBaseController extends Controller
     // Создать новую культурную базу
     public function store(Request $request)
     {
-        $cultureBase = new CultureBase;
-        $cultureBase->title = $request->title;
-        $cultureBase->description = $request->description;
-        $cultureBase->longitude = $request->longitude;
-        $cultureBase->latitude = $request->latitude;
-        $cultureBase->url = $request->url;
-        $cultureBase->countPeople = $request->countPeople;
-        $cultureBase->price = $request->price;
-        $cultureBase->save();
+        $cultureBase = CultureBase::create($request->all());
 
         return response()->json($cultureBase, 201);
     }
@@ -53,14 +45,7 @@ class CultureBaseController extends Controller
             return response()->json(['error' => 'Ошибка. Не найден элемент'], 404);
         }
 
-        $cultureBase->title = $request->title;
-        $cultureBase->description = $request->description;
-        $cultureBase->longitude = $request->longitude;
-        $cultureBase->latitude = $request->latitude;
-        $cultureBase->url = $request->url;
-        $cultureBase->countPeople = $request->countPeople;
-        $cultureBase->price = $request->price;
-        $cultureBase->save();
+        $cultureBase->update($request->all());
 
         return response()->json($cultureBase);
     }
@@ -76,6 +61,6 @@ class CultureBaseController extends Controller
 
         $cultureBase->delete();
 
-        return response()->json(['message' => 'Удалено успешно']);
+        return response()->json(null, 204);
     }
 }
