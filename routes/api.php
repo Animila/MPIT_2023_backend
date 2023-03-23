@@ -14,9 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {return $request->user();});
+    Route::get('/show', [\App\Http\Resources\CultureBaseController::class, 'show']);
+    Route::prefix('/culture')->group(function () {
+        Route::get('/get', [\App\Http\Resources\CultureBaseController::class, 'index']);
+        Route::middleware(['admin'])->group(function () {
+            Route::post('/create', [\App\Http\Resources\CultureBaseController::class, 'store']);
+            Route::put('/update/{id}', [\App\Http\Resources\CultureBaseController::class, 'update']);
+            Route::delete('/delete/{id}', [\App\Http\Resources\CultureBaseController::class, 'destroy']);
+        });
+    });
 });
 
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
+
+
+
