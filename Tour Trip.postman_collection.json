@@ -1,0 +1,813 @@
+{
+	"info": {
+		"_postman_id": "44617c34-f42a-4350-88c1-ad2f7311a637",
+		"name": "Tour Trip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Succ input login user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tel",
+									"value": "89241753537",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/login",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bad input login user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/login",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Succ input create user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Илья\",\r\n    \"lastName\": \"Христофоров\",\r\n    \"tel\": \"89241753537\",\r\n    \"password\": \"123456789\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/register",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bad input create user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/register",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get infp user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/user",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "2|4fWyyxwCEpyj6FPVfJZQvHXbDJpi33XsZQKMpxDl",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tourist Base",
+			"item": [
+				{
+					"name": "Create tourist base",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Название объекта\",\r\n    \"description\": \"Описание объекта\",\r\n    \"longitude\": \"100.0\",\r\n    \"latitude\": \"50.0\",\r\n    \"url\": \"http://example.com\",\r\n    \"countPeople\": 100,\r\n    \"price\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/create",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list tourist base",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/get",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update tourist base",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Новое название объекта\",\r\n    \"description\": \"Новое описание объекта\",\r\n    \"longitude\": \"101.0\",\r\n    \"latitude\": \"51.0\",\r\n    \"url\": \"http://new-example.com\",\r\n    \"countPeople\": 200,\r\n    \"price\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/update/1",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete tourist base",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Название объекта\",\r\n    \"description\": \"Описание объекта\",\r\n    \"longitude\": \"100.0\",\r\n    \"latitude\": \"50.0\",\r\n    \"url\": \"http://example.com\",\r\n    \"countPeople\": 100,\r\n    \"price\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/delete/4",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get tourist base ID",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/get/1",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "2|4fWyyxwCEpyj6FPVfJZQvHXbDJpi33XsZQKMpxDl",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "Get list tourist base",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/get",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rating",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_base\": 2,\r\n    \"id_user\": 1,\r\n    \"rating\": 5\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/rating/create",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"rating",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update rating",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Новое название объекта\",\r\n    \"description\": \"Новое описание объекта\",\r\n    \"longitude\": \"101.0\",\r\n    \"latitude\": \"51.0\",\r\n    \"url\": \"http://new-example.com\",\r\n    \"countPeople\": 200,\r\n    \"price\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/update/1",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rating",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Название объекта\",\r\n    \"description\": \"Описание объекта\",\r\n    \"longitude\": \"100.0\",\r\n    \"latitude\": \"50.0\",\r\n    \"url\": \"http://example.com\",\r\n    \"countPeople\": 100,\r\n    \"price\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/culture/delete",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"culture",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "2|4fWyyxwCEpyj6FPVfJZQvHXbDJpi33XsZQKMpxDl",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bonus",
+			"item": [
+				{
+					"name": "Get list bonus base",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/bonus/get",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"bonus",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rating",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_base\": 1,\r\n    \"id_user\": 1,\r\n    \"count\": 10,\r\n    \"type\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/bonus/create",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"bonus",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update rating",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_base\": 1,\r\n    \"id_user\": 1,\r\n    \"count\": 20,\r\n    \"type\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/bonus/update/1",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"bonus",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rating",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Название объекта\",\r\n    \"description\": \"Описание объекта\",\r\n    \"longitude\": \"100.0\",\r\n    \"latitude\": \"50.0\",\r\n    \"url\": \"http://example.com\",\r\n    \"countPeople\": 100,\r\n    \"price\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hackaton-yakse.ru/api/bonus/delete/1",
+							"protocol": "https",
+							"host": [
+								"hackaton-yakse",
+								"ru"
+							],
+							"path": [
+								"api",
+								"bonus",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "2|4fWyyxwCEpyj6FPVfJZQvHXbDJpi33XsZQKMpxDl",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
