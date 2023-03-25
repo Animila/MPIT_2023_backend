@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBonusesTable extends Migration
+class CreatePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateBonusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bonuses', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_base');
-            $table->unsignedBigInteger('id_user');
-            $table->integer('count');
-            $table->tinyInteger('type');
+            $table->string('url');
             $table->timestamps();
 
             $table->index('id_base');
-            $table->foreign('id_base')->on('culture_bases')->references('id');
-            $table->index('id_user');
-            $table->foreign('id_user')->on('users')->references('id');
+            $table->foreign('id_base')->on('bases')->references('id');
         });
     }
 
@@ -35,6 +31,6 @@ class CreateBonusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonuses');
+        Schema::dropIfExists('photos');
     }
 }

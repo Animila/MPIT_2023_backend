@@ -18,6 +18,6 @@ class Rating extends Model
 
     public function cultureBase()
     {
-        return $this->belongsTo(CultureBase::class, 'id_base');
+        return $this->belongsTo(Base::class, 'id_base');
     }
 }

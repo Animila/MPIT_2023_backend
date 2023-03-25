@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCultureBasesTable extends Migration
+class CreateItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateCultureBasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('culture_bases', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_base');
             $table->string('title');
-            $table->text('description');
-            $table->string('longitude');
-            $table->string('latitude');
-            $table->string('url');
             $table->integer('countPeople');
-            $table->integer('price');
+            $table->float('price');
             $table->timestamps();
+
+            $table->index('id_base');
+            $table->foreign('id_base')->on('bases')->references('id');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateCultureBasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('culture_bases');
+        Schema::dropIfExists('items');
     }
 }

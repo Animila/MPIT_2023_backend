@@ -17,11 +17,12 @@ class CreateRatingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_base');
             $table->unsignedBigInteger('id_user');
+            $table->text('about');
             $table->integer('rating');
             $table->timestamps();
 
             $table->index('id_base');
-            $table->foreign('id_base')->on('culture_bases')->references('id');
+            $table->foreign('id_base')->on('bases')->references('id');
             $table->index('id_user');
             $table->foreign('id_user')->on('users')->references('id');
         });
