@@ -21,7 +21,7 @@ class CreateBonusesTable extends Migration
             $table->timestamps();
 
             $table->index('item_id');
-            $table->foreign('item_id')->on('items')->references('id');
+            $table->foreign('item_id')->on('items')->references('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

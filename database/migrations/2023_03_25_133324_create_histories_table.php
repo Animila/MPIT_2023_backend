@@ -22,7 +22,7 @@ class CreateHistoriesTable extends Migration
             $table->timestamps();
 
             $table->index('cabinet_id');
-            $table->foreign('cabinet_id')->on('cabinets')->references('id');
+            $table->foreign('cabinet_id')->on('cabinets')->references('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

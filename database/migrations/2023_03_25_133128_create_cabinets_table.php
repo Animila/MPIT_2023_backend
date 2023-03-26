@@ -21,7 +21,7 @@ class CreateCabinetsTable extends Migration
             $table->timestamps();
 
             $table->index('user_id');
-            $table->foreign('user_id')->on('users')->references('id');
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

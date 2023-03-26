@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Base extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'longitude', 'latitude', 'url', 'countPeople', 'price'];
+    protected $fillable = ['title', 'description', 'longitude', 'latitude'];
 
+    public function services() {
+        return $this->hasMany(Item::class);
+    }
 
 }

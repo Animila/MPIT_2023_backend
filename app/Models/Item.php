@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
+
+    public function base() {
+        return $this->belongsTo(Base::class);
+    }
+    public function bonuses() {
+        return $this->hasMany(Bonus::class);
+    }
 }

@@ -1,0 +1,273 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API TourTravel documentation",
+        "description": "Система API для работы с приложением TourTravel",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "khristoforov-i@mail.ru"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/v1",
+            "description": "Сервер API для запросов v1"
+        },
+        {
+            "url": "http://127.0.0.1:8000/api/v2",
+            "description": "Сервер API для запросов v2"
+        }
+    ],
+    "paths": {
+        "/bases": {
+            "get": {
+                "tags": [
+                    "Base"
+                ],
+                "summary": "Получение список всех баз",
+                "operationId": "basesAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер страницы",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Base"
+                ],
+                "summary": "Создание новой базы",
+                "operationId": "basesCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BasesStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ошибка создания на стороне сервера"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/bases/{id}": {
+            "get": {
+                "tags": [
+                    "Base"
+                ],
+                "summary": "Получение базы по id",
+                "operationId": "baseId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID базы",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "Данные не обнаружены"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Base"
+                ],
+                "summary": "Обновление базы по id",
+                "operationId": "baseUpdateId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID базы",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BasesUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "422": {
+                        "description": "Нет никакого тела запроса"
+                    },
+                    "404": {
+                        "description": "База не найдена"
+                    },
+                    "500": {
+                        "description": "Ошибка обновления на стороне сервера"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Base"
+                ],
+                "summary": "Удаление базы по id",
+                "operationId": "baseDeleteId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID базы",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "База не найдена"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BasesStoreRequest": {
+                "title": "Пример запроса для создания",
+                "description": "Пример простого запроса для создания базы",
+                "properties": {
+                    "title": {
+                        "title": "Name",
+                        "description": "Название базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Ааарт"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Описание базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Парк для всех семьи"
+                    },
+                    "longitude": {
+                        "title": "Longitude",
+                        "description": "Долгота базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "129.675476"
+                    },
+                    "latitude": {
+                        "title": "Latitude",
+                        "description": "Ширина базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "62.035454"
+                    }
+                },
+                "type": "object"
+            },
+            "BasesUpdateRequest": {
+                "title": "Пример запроса для обновления какой-то базы",
+                "description": "Пример простого запроса для обновления одной базы",
+                "properties": {
+                    "title": {
+                        "title": "Name",
+                        "description": "Название базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Ааарт"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Описание базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Парк для всех семьи"
+                    },
+                    "longitude": {
+                        "title": "Longitude",
+                        "description": "Долгота базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "129.675476"
+                    },
+                    "latitude": {
+                        "title": "Latitude",
+                        "description": "Ширина базы",
+                        "type": "string",
+                        "format": "string",
+                        "example": "62.035454"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "token",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Base",
+            "description": "Работа с данными о базах"
+        }
+    ]
+}

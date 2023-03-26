@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
             $table->timestamps();
 
             $table->index('base_id');
-            $table->foreign('base_id')->on('bases')->references('id');
+            $table->foreign('base_id')->on('bases')->references('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -22,9 +22,9 @@ class CreateRatingsTable extends Migration
             $table->timestamps();
 
             $table->index('base_id');
-            $table->foreign('base_id')->on('bases')->references('id');
+            $table->foreign('base_id')->on('bases')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->index('user_id');
-            $table->foreign('user_id')->on('users')->references('id');
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
