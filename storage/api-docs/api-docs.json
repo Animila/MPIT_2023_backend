@@ -16,11 +16,15 @@
     "servers": [
         {
             "url": "http://127.0.0.1:8000/api/v1",
-            "description": "Сервер API для запросов v1"
+            "description": "Локальный сервер API для запросов v1"
+        },
+        {
+            "url": "https://hackaton-yakse.ru/api/v1",
+            "description": "Продакшн сервер API для запросов v1"
         },
         {
             "url": "http://127.0.0.1:8000/api/v2",
-            "description": "Сервер API для запросов v2"
+            "description": "Локальный Сервер API для запросов v2"
         }
     ],
     "paths": {
