@@ -17,8 +17,8 @@ class CreateBasesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->float('longitude');
-            $table->float('latitude');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->timestamps();
         });
     }
