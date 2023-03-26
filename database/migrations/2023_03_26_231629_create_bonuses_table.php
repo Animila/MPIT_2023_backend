@@ -15,13 +15,13 @@ class CreateBonusesTable extends Migration
     {
         Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_item');
+            $table->unsignedBigInteger('item_id');
             $table->tinyInteger('type');
             $table->integer('count');
             $table->timestamps();
 
-            $table->index('id_item');
-            $table->foreign('id_item')->on('items')->references('id');
+            $table->index('item_id');
+            $table->foreign('item_id')->on('items')->references('id');
         });
     }
 

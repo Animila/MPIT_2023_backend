@@ -15,13 +15,13 @@ class CreateCabinetsTable extends Migration
     {
         Schema::create('cabinets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('user_id');
             $table->float('totalBonus');
 
             $table->timestamps();
 
-            $table->index('id_user');
-            $table->foreign('id_user')->on('users')->references('id');
+            $table->index('user_id');
+            $table->foreign('user_id')->on('users')->references('id');
         });
     }
 

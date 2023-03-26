@@ -15,16 +15,16 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_base');
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('base_id');
+            $table->unsignedBigInteger('user_id');
             $table->text('about');
             $table->integer('rating');
             $table->timestamps();
 
-            $table->index('id_base');
-            $table->foreign('id_base')->on('bases')->references('id');
-            $table->index('id_user');
-            $table->foreign('id_user')->on('users')->references('id');
+            $table->index('base_id');
+            $table->foreign('base_id')->on('bases')->references('id');
+            $table->index('user_id');
+            $table->foreign('user_id')->on('users')->references('id');
         });
     }
 

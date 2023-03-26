@@ -15,14 +15,14 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_cabinet');
+            $table->unsignedBigInteger('cabinet_id');
             $table->tinyInteger('type');
             $table->json('action');
 
             $table->timestamps();
 
-            $table->index('id_cabinet');
-            $table->foreign('id_cabinet')->on('cabinets')->references('id');
+            $table->index('cabinet_id');
+            $table->foreign('cabinet_id')->on('cabinets')->references('id');
         });
     }
 

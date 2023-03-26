@@ -15,12 +15,12 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_base');
+            $table->unsignedBigInteger('base_id');
             $table->string('url');
             $table->timestamps();
 
-            $table->index('id_base');
-            $table->foreign('id_base')->on('bases')->references('id');
+            $table->index('base_id');
+            $table->foreign('base_id')->on('bases')->references('id');
         });
     }
 
