@@ -28,11 +28,15 @@ use OpenApi\Annotations as OA;
  *     description="Работа с данными о базах",
  * )
  * @OA\Server(
- *     description="Сервер API для запросов v1",
+ *     description="Локальный сервер API для запросов v1",
  *     url="http://127.0.0.1:8000/api/v1"
  * )
  *  * @OA\Server(
- *     description="Сервер API для запросов v2",
+ *     description="Продакшн сервер API для запросов v1",
+ *     url="https://hackaton-yakse.ru/api/v1"
+ * )
+ *  * @OA\Server(
+ *     description="Локальный Сервер API для запросов v2",
  *     url="http://127.0.0.1:8000/api/v2"
  * )
  * @OA\SecurityScheme(
