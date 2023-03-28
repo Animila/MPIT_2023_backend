@@ -9,6 +9,8 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'countPeople', 'price', 'base_id'];
+
     public function base() {
         return $this->belongsTo(Base::class);
     }

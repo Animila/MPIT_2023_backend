@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::resource('/bases', 'API\v1\BasesController');
+
+    Route::get('/bases/{base}/services', 'API\v1\ServicesController@index');
+    Route::post('/services', 'API\v1\ServicesController@store');
+    Route::get('/services/{id}', 'API\v1\ServicesController@show');
+    Route::put('/services/{id}', 'API\v1\ServicesController@update');
+    Route::delete('/services/{id}', 'API\v1\ServicesController@destroy');
 });
 
 //Route::middleware('auth:sanctum')->group(function () {

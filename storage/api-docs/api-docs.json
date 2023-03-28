@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API TourTravel documentation",
+        "title": "API TourTrip documentation",
         "description": "Система API для работы с приложением TourTravel",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
@@ -184,6 +184,172 @@
                     }
                 }
             }
+        },
+        "/bases/{id}/services": {
+            "get": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "Получение списка всех услуг базы",
+                "operationId": "servicesBaseAll",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID базы",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "База не найдена"
+                    }
+                }
+            }
+        },
+        "/services": {
+            "post": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "Создание новой услуги для базы",
+                "operationId": "servicesCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ServicesStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ошибка создания на стороне сервера"
+                    },
+                    "404": {
+                        "description": "База не найдена"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/services/{id}": {
+            "get": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "Получение услуги по id",
+                "operationId": "servicesId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID услуги",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "Данные не обнаружены"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "Обновление услуги по id",
+                "operationId": "servicesUpdateId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID услуги",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ServicesUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "422": {
+                        "description": "Нет никакого тела запроса"
+                    },
+                    "404": {
+                        "description": "Услуга не найдена"
+                    },
+                    "500": {
+                        "description": "Ошибка обновления на стороне сервера"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "Удаление услуги по id",
+                "operationId": "serviceDeleteId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID услуги",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "База не найдена"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -257,6 +423,76 @@
                     }
                 },
                 "type": "object"
+            },
+            "ServicesStoreRequest": {
+                "title": "Пример запроса для создания",
+                "description": "Пример простого запроса для услуги для базы",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "description": "Название услуги",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Ночека в двухэтажном доме"
+                    },
+                    "countPeople": {
+                        "title": "CountPeople",
+                        "description": "Количество доступных мест",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "2"
+                    },
+                    "price": {
+                        "title": "Price",
+                        "description": "Количество доступных мест",
+                        "type": "number",
+                        "format": "float",
+                        "example": "3456.23"
+                    },
+                    "base_id": {
+                        "title": "BaseId",
+                        "description": "Идентификатор базы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            },
+            "ServicesUpdateRequest": {
+                "title": "Пример запроса для обновления какой-то услуги",
+                "description": "Пример простого запроса для обновления услуги для базы",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "description": "Название услуги",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Ночека в двухэтажном доме"
+                    },
+                    "countPeople": {
+                        "title": "CountPeople",
+                        "description": "Количество доступных мест",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "2"
+                    },
+                    "price": {
+                        "title": "Price",
+                        "description": "Количество доступных мест",
+                        "type": "number",
+                        "format": "float",
+                        "example": "3456.23"
+                    },
+                    "base_id": {
+                        "title": "BaseId",
+                        "description": "Идентификатор базы",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
             }
         },
         "securitySchemes": {
@@ -272,6 +508,10 @@
         {
             "name": "Base",
             "description": "Работа с данными о базах"
+        },
+        {
+            "name": "Service",
+            "description": "Работа с данными о услугах тур базы"
         }
     ]
 }

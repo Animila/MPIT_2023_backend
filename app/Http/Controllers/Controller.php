@@ -11,7 +11,7 @@ use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(
- *     title="API TourTravel documentation",
+ *     title="API TourTrip documentation",
  *     version="1.0.0",
  *     termsOfService="http://swagger.io/terms/",
  *     description="Система API для работы с приложением TourTravel",
@@ -26,6 +26,10 @@ use OpenApi\Annotations as OA;
  * @OA\Tag(
  *     name="Base",
  *     description="Работа с данными о базах",
+ * )
+ * @OA\Tag(
+ *     name="Service",
+ *     description="Работа с данными о услугах тур базы",
  * )
  * @OA\Server(
  *     description="Локальный сервер API для запросов v1",
