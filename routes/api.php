@@ -22,6 +22,13 @@ Route::prefix('v1')->group(function () {
     Route::get('/services/{id}', 'API\v1\ServicesController@show');
     Route::put('/services/{id}', 'API\v1\ServicesController@update');
     Route::delete('/services/{id}', 'API\v1\ServicesController@destroy');
+
+
+    Route::get('/services/{id}/bonuses', 'API\v1\BonusesController@index');
+    Route::post('/bonuses', 'API\v1\BonusesController@store');
+    Route::get('/bonuses/{id}', 'API\v1\BonusesController@show');
+    Route::put('/bonuses/{id}', 'API\v1\BonusesController@update');
+    Route::delete('/bonuses/{id}', 'API\v1\BonusesController@destroy');
 });
 
 //Route::middleware('auth:sanctum')->group(function () {

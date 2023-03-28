@@ -25,11 +25,15 @@ use OpenApi\Annotations as OA;
  * )
  * @OA\Tag(
  *     name="Base",
- *     description="Работа с данными о базах",
+ *     description="Работа с данными о тур базах",
  * )
  * @OA\Tag(
  *     name="Service",
- *     description="Работа с данными о услугах тур базы",
+ *     description="Работа с данными об услугах тур базы",
+ * )
+ * @OA\Tag(
+ *     name="Bonus",
+ *     description="Работа с данными о бонусах за услуги",
  * )
  * @OA\Server(
  *     description="Локальный сервер API для запросов v1",

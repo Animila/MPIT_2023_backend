@@ -185,6 +185,172 @@
                 }
             }
         },
+        "/services/{id}/bonuses": {
+            "get": {
+                "tags": [
+                    "Bonus"
+                ],
+                "summary": "Получение списка всех бонусов у услуги",
+                "operationId": "bonusesServicesAll",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID услуги",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "Услуга не найдена"
+                    }
+                }
+            }
+        },
+        "/bonuses": {
+            "post": {
+                "tags": [
+                    "Bonus"
+                ],
+                "summary": "Создание нового бонуса для услуги",
+                "operationId": "bonusesCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BonusesStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ошибка создания на стороне сервера"
+                    },
+                    "404": {
+                        "description": "Услуга не найдена"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/bonuses/{id}": {
+            "get": {
+                "tags": [
+                    "Bonus"
+                ],
+                "summary": "Получение бонуса по id",
+                "operationId": "bonusesId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID бонуса",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "Данные не обнаружены"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bonus"
+                ],
+                "summary": "Обновление бонуса по id",
+                "operationId": "bonusesUpdateId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID бонуса",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BonusesUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "422": {
+                        "description": "Нет никакого тела запроса"
+                    },
+                    "404": {
+                        "description": "Бонус не найден"
+                    },
+                    "500": {
+                        "description": "Ошибка обновления на стороне сервера"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bonus"
+                ],
+                "summary": "Удаление бонуса по id",
+                "operationId": "bonusesDeleteId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID бонуса",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Все прошло хорошо"
+                    },
+                    "404": {
+                        "description": "База не найдена"
+                    }
+                }
+            }
+        },
         "/bases/{id}/services": {
             "get": {
                 "tags": [
@@ -424,6 +590,62 @@
                 },
                 "type": "object"
             },
+            "BonusesStoreRequest": {
+                "title": "Пример запроса для создания",
+                "description": "Пример простого запроса создания бонуса для услуги",
+                "properties": {
+                    "item_id": {
+                        "title": "ItemId",
+                        "description": "Идентификатор услуги",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "2"
+                    },
+                    "type": {
+                        "title": "Type",
+                        "description": "Тип услуги (0 - для постоянных, 1 - при 'нарнии')",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "0"
+                    },
+                    "count": {
+                        "title": "Count",
+                        "description": "Количество получаемых бонусов",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1234"
+                    }
+                },
+                "type": "object"
+            },
+            "BonusesUpdateRequest": {
+                "title": "Пример запроса для обноеления",
+                "description": "Пример простого запроса обноеления бонуса для услуги",
+                "properties": {
+                    "item_id": {
+                        "title": "ItemId",
+                        "description": "Идентификатор услуги",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "2"
+                    },
+                    "type": {
+                        "title": "Type",
+                        "description": "Тип услуги (0 - для постоянных, 1 - при 'нарнии')",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "0"
+                    },
+                    "count": {
+                        "title": "Count",
+                        "description": "Количество получаемых бонусов",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1234"
+                    }
+                },
+                "type": "object"
+            },
             "ServicesStoreRequest": {
                 "title": "Пример запроса для создания",
                 "description": "Пример простого запроса для услуги для базы",
@@ -507,11 +729,15 @@
     "tags": [
         {
             "name": "Base",
-            "description": "Работа с данными о базах"
+            "description": "Работа с данными о тур базах"
         },
         {
             "name": "Service",
-            "description": "Работа с данными о услугах тур базы"
+            "description": "Работа с данными об услугах тур базы"
+        },
+        {
+            "name": "Bonus",
+            "description": "Работа с данными о бонусах за услуги"
         }
     ]
 }
