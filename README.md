@@ -30,18 +30,18 @@
 
 Теперь мы используем Docker для развертывания на сервере. ВНИМАНИЕ! Возможны некоторые проблемы при установке - обратитесь к разработчику за помощью
 
-`docker-compose up -d`
+`docker-compose up -d --build`
 
-Если же надо установить уже на сервер, то активируем докер продакшена:
 
-`docker-compose -f docker-compose.prod.yml up -d`
+~~После этого следует установить все зависимости:
+`docker-compose exec app composer install`; После чего уже установить ключ шифрования: `docker-compose exec app php artisan key:generate`.~~
 
-После этого следует установить все зависимости:
-`docker-compose exec app composer install`; После чего уже установить ключ шифрования: `docker-compose exec app php artisan key:generate`.
+Провел полную автоматизацию. Теперь есть отслеживание изменений внутри контейнеров, при запуске устаналиваются все зависимости и проводятся миграции.  
 
 ## Использование
 
 Необходимо настроить внешний nginx на работу с портом 80.
+При измении документации необходимо запускать переустановку swagger: `php artisan l5-swagger:generate`
 
 ## ОПИСАНИЕ МЕТОДОВ API ЛЕЖИТ В ФАЙЛЕ `Tour Trip.postman_collection.json`
 
