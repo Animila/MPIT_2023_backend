@@ -1,49 +1,36 @@
 version: "3.7"
 services:
-    app:
-        build:
-            args:
-                user: sammy
-                uid: 1000
-            context: ./
-            dockerfile: Dockerfile
-        container_name: api-app
-        restart: unless-stopped
-        working_dir: /var/www/
+    mysql:
+        image: mysql:latest
+        restart: always
         volumes:
-            - ./:/var/www
-        networks:
-            - net
-
-    db:
-        image: mysql:8.0
-        container_name: api-db
-        restart: unless-stopped
+            - ./tmp/db:/var/lib/mysql
         environment:
-            MYSQL_DATABASE: laravel
-            MYSQL_ROOT_PASSWORD: root
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
+            MYSQL_DATABASE: travel
+            MYSQL_ROOT_PASSWORD: travel9012
         ports:
-            - 8012:3306
+            - 8742:3306
+        container_name: travel_mysql
 
-        networks:
-            - net
+    api:
+        build:
+            context: .
+            dockerfile: Docker/api/Dockerfile
+        restart: always
+        container_name: travel_api
+        depends_on:
+            - mysql
+        volumes:
+            - .:/var/www/api
 
     nginx:
-        image: nginx:alpine
-        container_name: api-nginx
-        restart: unless-stopped
-        ports:
-            - 8023:80
+        image: nginx:latest
         volumes:
-            - ./:/var/www
-            - ./docker-compose/nginx:/etc/nginx/conf.d/
-        networks:
-            - net
+            - ./:/var/www/api
+            - ./Docker/nginx/conf.d:/etc/nginx/conf.d
+        ports:
+            - 9999:80
         depends_on:
-            - app
+            - api
+        container_name: travel_nginx
 
-networks:
-    net:
-        driver: bridge

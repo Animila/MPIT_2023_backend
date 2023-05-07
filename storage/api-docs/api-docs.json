@@ -16,15 +16,19 @@
     "servers": [
         {
             "url": "http://127.0.0.1:8000/api/v1",
-            "description": "Локальный сервер API для запросов v1"
+            "description": "Local API v1"
+        },
+        {
+            "url": "http://localhost:9999/api/v1",
+            "description": "Local API Docker v1"
         },
         {
             "url": "https://hackaton-yakse.ru/api/v1",
-            "description": "Продакшн сервер API для запросов v1"
+            "description": "Product API v1"
         },
         {
             "url": "http://127.0.0.1:8000/api/v2",
-            "description": "Локальный Сервер API для запросов v2"
+            "description": "Local API v2 (not working)"
         }
     ],
     "paths": {
