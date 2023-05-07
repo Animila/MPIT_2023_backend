@@ -28,7 +28,7 @@ COPY . .
 
 # Установка зависимостей Laravel
 COPY ./composer.json ./composer.lock ./
-RUN composer install --prefer-dist --no-ansi --no-interaction --no-scripts --no-progress --no-suggest
+#RUN composer install --prefer-dist --no-ansi --no-interaction --no-scripts --no-progress --no-suggest
 
 
 # Настройка прав на директории
@@ -36,8 +36,8 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
 
 # Конфигурирование приложения
-RUN php artisan key:generate
+#RUN php artisan key:generate
 
 EXPOSE 9000
 
-CMD php artisan migrate && php artisan serve
+#CMD php artisan migrate && php artisan serve
